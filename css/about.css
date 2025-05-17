@@ -1,0 +1,66 @@
+  /* -------------  RESET & VARIABLES ------------- */
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --bg1:#1c92d2;       /* deep cyan  */
+    --bg2:#f2fcfe;       /* pale teal  */
+    --txt:#ffffff;       /* pure white */
+    --cube-size:70px;
+  }
+  body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    perspective:1200px;
+    background:linear-gradient(135deg,var(--bg1),var(--bg2));
+    overflow:hidden;
+    font-family:'Poppins',sans-serif;
+  }
+
+  /* -------------  FLOATING CUBES ------------- */
+  .cube{
+    position:absolute;
+    width:var(--cube-size);
+    height:var(--cube-size);
+    transform-style:preserve-3d;
+    animation:spin 10s linear infinite;
+    filter:drop-shadow(0 15px 25px rgba(0,0,0,.2));
+    opacity:.8;
+  }
+  .cube div{
+    position:absolute;
+    width:100%;height:100%;
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.18);
+    backdrop-filter:blur(2px);
+  }
+    /* six faces */
+    .cube .front  {transform:translateZ(calc(var(--cube-size)/2));}
+    .cube .back   {transform:rotateY(180deg) translateZ(calc(var(--cube-size)/2));}
+    .cube .right  {transform:rotateY( 90deg) translateZ(calc(var(--cube-size)/2));}
+    .cube .left   {transform:rotateY(-90deg) translateZ(calc(var(--cube-size)/2));}
+    .cube .top    {transform:rotateX( 90deg) translateZ(calc(var(--cube-size)/2));}
+    .cube .bottom {transform:rotateX(-90deg) translateZ(calc(var(--cube-size)/2));}
+
+  @keyframes spin{
+    from{transform:rotateX(0deg) rotateY(0deg);}
+    to  {transform:rotateX(360deg) rotateY(360deg);}
+  }
+
+  /* different cube instances (size, position, speed) */
+  .cube:nth-child(1){--cube-size:65px;top:10%;left:15%;animation-duration:16s;}
+  .cube:nth-child(2){--cube-size:90px;top:75%;left:20%;animation-direction:reverse;animation-duration:22s;}
+  .cube:nth-child(3){--cube-size:55px;top:20%;right:12%;animation-duration:18s;}
+  .cube:nth-child(4){--cube-size:80px;bottom:15%;right:25%;animation-direction:reverse;animation-duration:25s;}
+
+  /* -------------  3-D HEADING ------------- */
+  h1{
+    color:var(--txt);
+    font-size:clamp(2.5rem,8vw,6rem);
+    letter-spacing:1px;
+    text-shadow:0 20px 40px rgba(0,0,0,.3);
+    transform-style:preserve-3d;
+    transition:transform .15s ease-out;
+    user-select:none;
+    pointer-events:none;
+  }

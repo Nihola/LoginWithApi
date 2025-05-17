@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/about.css">
+</head>
+<body>
+    <div class="cube">
+        <div class="front"></div><div class="back"></div><div class="right"></div>
+        <div class="left"></div><div class="top"></div><div class="bottom"></div>
+      </div>
+      <div class="cube">
+        <div class="front"></div><div class="back"></div><div class="right"></div>
+        <div class="left"></div><div class="top"></div><div class="bottom"></div>
+      </div>
+      <div class="cube">
+        <div class="front"></div><div class="back"></div><div class="right"></div>
+        <div class="left"></div><div class="top"></div><div class="bottom"></div>
+      </div>
+      <div class="cube">
+        <div class="front"></div><div class="back"></div><div class="right"></div>
+        <div class="left"></div><div class="top"></div><div class="bottom"></div>
+      </div>
+    
+      <!-- Main title -->
+      <h1>Bu mening&nbsp;shaxsiy&nbsp;saytim</h1>
+    
+      <script>
+        /* ---------- Mouse-move parallax tilt for the heading ---------- */
+        const heading = document.querySelector('h1');
+        const maxTilt = 15; // degrees
+
+        window.addEventListener('mousemove', e => {
+            const { innerWidth: w, innerHeight: h } = window;
+            const x = (e.clientX - w / 2) / (w / 2); // -1 .. 1
+            const y = (e.clientY - h / 2) / (h / 2); // -1 .. 1
+            heading.style.transform = `rotateX(${-y * maxTilt}deg) rotateY(${x * maxTilt}deg)`;
+        });
+
+        /* Optional: slow reset on mouse leave */
+        window.addEventListener('mouseleave', () => {
+            heading.style.transform = 'rotateX(0deg) rotateY(0deg)';
+        });
+    </script>
+</body>
+</html>
